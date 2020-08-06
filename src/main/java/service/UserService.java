@@ -1,10 +1,20 @@
+package service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import service.validate.ValidatorService;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class UserService {
     private MailService mailService;
+    @Autowired
+    private ValidatorService validatorService;
 
+    @Autowired
     public void setMailService(MailService mailService) {
         this.mailService = mailService;
     }
@@ -29,6 +39,8 @@ public class UserService {
     }
 
     public User register(String email, String password, String name) {
+        validatorService.validate(email, password, name);
+
         users.forEach((user -> {
             if (user.getEmail().equalsIgnoreCase(email)) {
                 throw new RuntimeException("existed");

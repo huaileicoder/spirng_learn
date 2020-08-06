@@ -1,3 +1,5 @@
+package service;
+
 public class User {
     private final int userId;
     private String email;
