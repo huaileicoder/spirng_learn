@@ -11,8 +11,8 @@ public class ValidatorService {
     List<IValidator> IValidators;
 
     public void validate(String email, String password, String name) {
-        for (IValidator IValidator : IValidators) {
-            IValidator.validate(email, password, name);
+        for (IValidator iValidator : IValidators) {
+            iValidator.validate(email, password, name);
         }
     }
 }
